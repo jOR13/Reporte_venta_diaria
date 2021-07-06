@@ -1,0 +1,26 @@
+{
+  "id": "385ec6be-d972-4871-bd47-45ddaa8a840e",
+  "name": "Reporte_venta_diaria",
+  "publisher": "Jesús Ochoa",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "This is a dev to register all the journal sales info",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 60000,
+      "to": 60149
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://Reporte_venta_diaria.com/help/",
+  "showMyCode": false,
+  "runtime": "6.0"
+}
