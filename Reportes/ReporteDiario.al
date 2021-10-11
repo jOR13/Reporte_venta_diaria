@@ -10,22 +10,18 @@ report 60000 ReporteDiarioInfo
         dataitem(DataItemName; tableReporteDiario)
         {
 
-            column(id; id)
+            column(folio; id)
             {
             }
-            column(uni; unidad)
+
+            column(fecha; Posting_Date)
             {
             }
+            column(unidad; unidad)
+            {
+            }
+
             column(cedis; cedis)
-            {
-            }
-            column(temp; TempMolecula)
-            {
-            }
-            column(presion; PresionMolecula)
-            {
-            }
-            column(date; Posting_Date)
             {
             }
             column(capacidad; Capacidad)
@@ -34,51 +30,35 @@ report 60000 ReporteDiarioInfo
             column(chofer; Chofer)
             {
             }
-            column(gastanqueI; GasTanqueCarburacionInicial)
+
+
+
+            column(inicioPor; inicioPorcentaje)
             {
             }
-            column(gastanqueF; GasTanqueCarburacionFinal)
+            column(inicioTurnoL; inicioTurnoLitros)
             {
             }
-            column(mtf; MagnatelTanqueFinal)
+            column(Venta; Venta)
             {
             }
-            column(mti; MagnatelTanqueInicial)
+            column(InicioVenta; InicioVenta)
             {
             }
-            column(mcf; MedidorCarburacionFianl)
+            column(finTurnoP; finTurnoPorcentaje)
             {
             }
-            column(mci; MedidorCarburacionInicial)
+            column(finTurnoL; finTurnoLitros)
             {
             }
-            column(ofu; OdometroFInalDelaUnidad)
+            column(diferencia; diferencia)
             {
             }
-            column(oiu; OdometroInicialDeLaUnidad)
+            column(diferenciaP; diferenciaPorcentaje)
             {
             }
-            column(prif; PorcentajFianlRI)
-            {
-            }
-            column(piri; PorcentajeInicialRI)
-            {
-            }
-            column(vgtc; VariacionGasTanqueCarburacion)
-            {
-            }
-            column(vmt; VariacionMagnatelTanque)
-            {
-            }
-            column(vmc; VariacionMedidorCarburacion)
-            {
-            }
-            column(vo; VariacionOdometro)
-            {
-            }
-            column(vri; VariacionRI)
-            {
-            }
+
+
         }
     }
 

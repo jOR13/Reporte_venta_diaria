@@ -133,10 +133,46 @@ table 60001 tableReporteDiario
             DecimalPlaces = 1 : 2;
 
         }
-
-
-
-
+        field(25; "inicioTurnoLitros"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
+        field(26; "inicioPorcentaje"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
+        field(27; "Venta"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
+        field(28; "InicioVenta"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
+        field(29; "finTurnoPorcentaje"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
+        field(30; "finTurnoLitros"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
+        field(31; "diferencia"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
+        field(32; "diferenciaPorcentaje"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+        }
     }
 
     keys

@@ -73,6 +73,87 @@ page 60001 pagReporteDiario
                     ApplicationArea = All;
                 }
             }
+
+            group("Informacion de la venta")
+            {
+
+                field(inicioPorcentaje; Rec.inicioPorcentaje)
+                {
+                    ToolTip = 'Specifies the value of the inicioPorcentaje field.';
+                    Caption = 'Inicio de turno (%)';
+                    ApplicationArea = All;
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                    begin
+                        Rec.inicioTurnoLitros := rec.inicioPorcentaje * rec.Capacidad / 100;
+                    end;
+                }
+                field(inicioTurnoLitros; Rec.inicioTurnoLitros)
+                {
+                    ToolTip = 'Specifies the value of the inicioTurnoLitros field.';
+                    ApplicationArea = All;
+                    Caption = 'Inicio de turno (Litros)';
+                }
+                field(Venta; Rec.Venta)
+                {
+                    ToolTip = 'Specifies the value of the Venta field.';
+                    ApplicationArea = All;
+                    Caption = 'Venta';
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                    begin
+                        Rec.InicioVenta := rec.inicioTurnoLitros - rec.Venta;
+                    end;
+                }
+                field(InicioVenta; Rec.InicioVenta)
+                {
+                    ToolTip = 'Specifies the value of the InicioVenta field.';
+                    ApplicationArea = All;
+                    Caption = 'Inicio-Venta';
+                }
+                field(finTurnoPorcentaje; Rec.finTurnoPorcentaje)
+                {
+                    ToolTip = 'Specifies the value of the finTurnoPorcentaje field.';
+                    ApplicationArea = All;
+                    Caption = 'Fin de turno (%)';
+                    trigger OnValidate()
+                    begin
+                        Rec.finTurnoLitros := rec.finTurnoPorcentaje * rec.Capacidad / 100;
+                        Rec.diferencia := rec.finTurnoLitros - rec.InicioVenta;
+                        Rec.diferenciaPorcentaje := (rec.diferencia / rec.Venta) * 100;
+
+                        if rec.diferencia < 0 then begin
+                            TxtStyleExpr := 'Unfavorable'
+                        end else begin
+                            TxtStyleExpr := 'Favorable'
+                        end;
+                    end;
+                }
+                field(finTurnoLitros; Rec.finTurnoLitros)
+                {
+                    ToolTip = 'Specifies the value of the finTurnoLitros field.';
+                    ApplicationArea = All;
+                    Caption = 'Fin de turno (Litros)';
+                }
+                field(diferencia; Rec.diferencia)
+                {
+                    ToolTip = 'Specifies the value of the diferencia field.';
+                    ApplicationArea = All;
+                    Caption = 'Diferencia';
+                    StyleExpr = TxtStyleExpr;
+
+                }
+                field(diferenciaPorcentaje; Rec.diferenciaPorcentaje)
+                {
+                    ToolTip = 'Specifies the value of the diferencia field.';
+                    ApplicationArea = All;
+                    Caption = '%';
+                    StyleExpr = TxtStyleExpr;
+
+                }
+            }
             group("Odometro de la unidad")
             {
 
@@ -280,5 +361,5 @@ page 60001 pagReporteDiario
     }
 
     var
-        myInt: Integer;
+        TxtStyleExpr: Text;
 }
