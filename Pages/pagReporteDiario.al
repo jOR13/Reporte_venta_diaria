@@ -94,6 +94,7 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the inicioTurnoLitros field.';
                     ApplicationArea = All;
                     Caption = 'Inicio de turno (Litros)';
+                    Editable = false;
                 }
                 field(Venta; Rec.Venta)
                 {
@@ -112,6 +113,7 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the InicioVenta field.';
                     ApplicationArea = All;
                     Caption = 'Inicio-Venta';
+                    Editable = false;
                 }
                 field(finTurnoPorcentaje; Rec.finTurnoPorcentaje)
                 {
@@ -136,6 +138,7 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the finTurnoLitros field.';
                     ApplicationArea = All;
                     Caption = 'Fin de turno (Litros)';
+                    Editable = false;
                 }
                 field(diferencia; Rec.diferencia)
                 {
@@ -143,6 +146,7 @@ page 60001 pagReporteDiario
                     ApplicationArea = All;
                     Caption = 'Diferencia';
                     StyleExpr = TxtStyleExpr;
+                    Editable = false;
 
                 }
                 field(diferenciaPorcentaje; Rec.diferenciaPorcentaje)
@@ -151,7 +155,7 @@ page 60001 pagReporteDiario
                     ApplicationArea = All;
                     Caption = '%';
                     StyleExpr = TxtStyleExpr;
-
+                    Editable = false;
                 }
             }
             group("Odometro de la unidad")
