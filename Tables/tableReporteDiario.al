@@ -53,7 +53,7 @@ table 60001 tableReporteDiario
         }
 
 
-
+        //odometro
         field(6; "OdometroInicialDeLaUnidad"; decimal)
         {
             DataClassification = ToBeClassified;
@@ -71,6 +71,8 @@ table 60001 tableReporteDiario
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
         }
+
+        //ri
         field(9; "PorcentajeInicialRI"; decimal)
         {
             DataClassification = ToBeClassified;
@@ -86,48 +88,35 @@ table 60001 tableReporteDiario
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
         }
-        field(12; "MagnatelTanqueInicial"; decimal)
+
+        //carburacion porcentaje
+        field(15; "tanqueCarburacionInicialP"; decimal)
         {
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
         }
-        field(13; "MagnatelTanqueFinal"; decimal)
+        field(16; "tanqueCarburacionFinalP"; decimal)
         {
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
         }
-        field(14; "VariacionMagnatelTanque"; decimal)
-        {
-            DataClassification = ToBeClassified;
-            DecimalPlaces = 1 : 2;
-        }
-        field(15; "MedidorCarburacionInicial"; decimal)
-        {
-            DataClassification = ToBeClassified;
-            DecimalPlaces = 1 : 2;
-        }
-        field(16; "MedidorCarburacionFianl"; decimal)
-        {
-            DataClassification = ToBeClassified;
-            DecimalPlaces = 1 : 2;
-        }
-        field(17; "VariacionMedidorCarburacion"; decimal)
+        field(17; "tanqueCarburacionVariacionP"; decimal)
         {
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
         }
 
-        field(18; "GasTanqueCarburacionInicial"; decimal)
+        field(18; "tanqueCarburacionInicialL"; decimal)
         {
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
         }
-        field(19; "GasTanqueCarburacionFinal"; decimal)
+        field(19; "tanqueCarburacionFinalL"; decimal)
         {
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
         }
-        field(20; "VariacionGasTanqueCarburacion"; decimal)
+        field(20; "tanqueCarburacionVariacionL"; decimal)
         {
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
@@ -172,6 +161,12 @@ table 60001 tableReporteDiario
         {
             DataClassification = ToBeClassified;
             DecimalPlaces = 1 : 2;
+        }
+        field(33; "CapacidadT"; decimal)
+        {
+            DataClassification = ToBeClassified;
+            DecimalPlaces = 1 : 2;
+            InitValue = 120;
         }
     }
 

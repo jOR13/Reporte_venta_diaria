@@ -14,6 +14,7 @@ page 60003 Unidades
                 field(Name; Rec.nameUnidad)
                 {
                     ApplicationArea = All;
+                    Caption = '# Economico';
 
                 }
                 field(Capacidad; Rec.Capacidad)

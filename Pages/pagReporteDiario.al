@@ -18,6 +18,7 @@ page 60001 pagReporteDiario
                 {
                     ApplicationArea = All;
                     Caption = 'Folio';
+                    Editable = false;
                 }
                 field(Fecha; Rec.Posting_Date)
                 {
@@ -59,6 +60,7 @@ page 60001 pagReporteDiario
                 {
                     ToolTip = 'Specifies the value of the Capacidad field';
                     ApplicationArea = All;
+                    Caption = 'Capacidad Pipa';
                 }
                 field(TempMolecula; Rec.TempMolecula)
                 {
@@ -71,6 +73,13 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the PresionMolecula field';
                     Caption = 'Presion molecula';
                     ApplicationArea = All;
+                }
+                field(CapacidadT; Rec.CapacidadT)
+                {
+                    ToolTip = 'Specifies the value of the PresionMolecula field';
+                    Caption = 'Capacidad Tanque Carburacion';
+                    ApplicationArea = All;
+
                 }
             }
 
@@ -112,7 +121,7 @@ page 60001 pagReporteDiario
                 {
                     ToolTip = 'Specifies the value of the InicioVenta field.';
                     ApplicationArea = All;
-                    Caption = 'Inicio-Venta';
+                    Caption = 'Inventario final';
                     Editable = false;
                 }
                 field(finTurnoPorcentaje; Rec.finTurnoPorcentaje)
@@ -140,22 +149,27 @@ page 60001 pagReporteDiario
                     Caption = 'Fin de turno (Litros)';
                     Editable = false;
                 }
-                field(diferencia; Rec.diferencia)
-                {
-                    ToolTip = 'Specifies the value of the diferencia field.';
-                    ApplicationArea = All;
-                    Caption = 'Diferencia';
-                    StyleExpr = TxtStyleExpr;
-                    Editable = false;
 
-                }
-                field(diferenciaPorcentaje; Rec.diferenciaPorcentaje)
+                grid(Grid2)
                 {
-                    ToolTip = 'Specifies the value of the diferencia field.';
-                    ApplicationArea = All;
-                    Caption = '%';
-                    StyleExpr = TxtStyleExpr;
-                    Editable = false;
+                    field(diferencia; Rec.diferencia)
+                    {
+                        ToolTip = 'Specifies the value of the diferencia field.';
+                        ApplicationArea = All;
+                        Caption = 'Diferencia';
+                        StyleExpr = TxtStyleExpr;
+                        Editable = false;
+
+                    }
+                    field(diferenciaPorcentaje; Rec.diferenciaPorcentaje)
+                    {
+                        ToolTip = 'Specifies the value of the diferencia field.';
+                        ApplicationArea = All;
+                        Caption = '%';
+                        StyleExpr = TxtStyleExpr;
+                        Editable = false;
+                    }
+
                 }
             }
             group("Odometro de la unidad")
@@ -235,116 +249,66 @@ page 60001 pagReporteDiario
 
             }
 
-            group("Lectura de Magnatel Tanque %")
+
+
+            group("Lecuta medidor de carburacion")
             {
-                field("Lectura de magnatel tanque inicial"; Rec.MagnatelTanqueInicial)
-                {
-                    ToolTip = 'Specifies the value of the "Lectura de magnatel tanque inicial field';
-                    ApplicationArea = All;
-                    Caption = 'Lectura de magnatel tanque inicial';
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        Rec.VariacionMagnatelTanque := rec.MagnatelTanqueFinal - rec.MagnatelTanqueInicial;
-                    end;
-                }
-                field("Lectura de magnatel tanque final"; Rec.MagnatelTanqueFinal)
-                {
-                    ToolTip = 'Specifies the value of the Lectura de magnatel tanque final field';
-                    ApplicationArea = All;
-                    Caption = 'Lectura de magnatel tanque final';
-
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        Rec.VariacionMagnatelTanque := rec.MagnatelTanqueFinal - rec.MagnatelTanqueInicial;
-                    end;
-                }
-                field("Variacion magnatel tanque"; Rec.VariacionMagnatelTanque)
-                {
-                    ToolTip = 'Specifies the value of the Variacion magnatel tanque field';
-                    ApplicationArea = All;
-                    Caption = '';
-                    Enabled = false;
-                }
-
-            }
-
-            group("Lecuta medidor de carburacion %")
-            {
-                field("Lectura inicial de medidor de carburacion"; Rec.MedidorCarburacionInicial)
+                field("Lectura inicial de medidor de carburacion"; Rec.tanqueCarburacionInicialP)
                 {
                     ToolTip = 'Specifies the value of the MedidorCarburacionInicial field';
                     ApplicationArea = All;
-                    Caption = 'Lectura inicial de medidor de carburacion';
+                    Caption = 'Lectura inicial de medidor de carburacion %';
 
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        Rec.VariacionMedidorCarburacion := rec.MedidorCarburacionFianl - rec.MedidorCarburacionInicial;
-                    end;
                 }
-                field("Lectura final de medidor de carburacion"; Rec.MedidorCarburacionFianl)
+                field("Lectura final de medidor de carburacion"; Rec.tanqueCarburacionFinalP)
                 {
                     ToolTip = 'Specifies the value of the MedidorCarburacionFianl field';
                     ApplicationArea = All;
-                    Caption = 'Lectura final de medidor de carburacion';
+                    Caption = 'Lectura final de medidor de carburacion %';
                     trigger OnValidate()
                     var
                         myInt: Integer;
                     begin
-                        Rec.VariacionMedidorCarburacion := rec.MedidorCarburacionFianl - rec.MedidorCarburacionInicial;
+                        Rec.tanqueCarburacionVariacionP := rec.tanqueCarburacionFinalP - rec.tanqueCarburacionInicialP;
+
+                        Rec.tanqueCarburacionInicialL := (rec.tanqueCarburacionInicialP / rec.CapacidadT) * 100;
+                        Rec.tanqueCarburacionFinalL := (rec.tanqueCarburacionFinalP / rec.CapacidadT) * 100;
+                        Rec.tanqueCarburacionVariacionL := (rec.tanqueCarburacionVariacionP / rec.CapacidadT) * 100;
                     end;
                 }
-                field("Variacion de lectura medidor de carburacion"; Rec.VariacionMedidorCarburacion)
+                field("Variacion de lectura medidor de carburacion"; Rec.tanqueCarburacionVariacionP)
                 {
                     ToolTip = 'Specifies the value of the VariacionMedidorCarburacion field';
                     ApplicationArea = All;
-                    Caption = 'Variacion de lectura medidor de carburacion';
+                    Caption = 'Variacion de lectura medidor de carburacion %';
                     Enabled = false;
+                }
+
+                field("Lectura inicial de medidor de carburacion (Litros)"; Rec.tanqueCarburacionInicialL)
+                {
+                    ToolTip = 'Specifies the value of the MedidorCarburacionInicial field';
+                    ApplicationArea = All;
+                    Caption = 'Lectura inicial de medidor de carburacion (Litros)';
+
+                }
+                field("Lectura final de medidor de carburacion (litros)"; Rec.tanqueCarburacionFinalL)
+                {
+                    ToolTip = 'Specifies the value of the MedidorCarburacionFianl field';
+                    ApplicationArea = All;
+                    Caption = 'Lectura final de medidor de carburacion (Litros)';
+
+                }
+                field("Variacion de lectura medidor de carburacion (litros)"; Rec.tanqueCarburacionVariacionL)
+                {
+                    ToolTip = 'Specifies the value of the VariacionMedidorCarburacion field';
+                    ApplicationArea = All;
+                    Caption = 'Variacion de lectura medidor de carburacion (Litros)';
+                    Enabled = false;
+
                 }
 
             }
 
-            group("Lectura gas liquido tanque carburacion %")
-            {
-                field("Lectura inicial gas liquido taque carburacion"; Rec.GasTanqueCarburacionInicial)
-                {
-                    ToolTip = 'Specifies the value of the GasTanqueCarburacionInicial field';
-                    ApplicationArea = All;
-                    Caption = 'Lectura inicial gas liquido taque carburacion';
-
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        Rec.VariacionGasTanqueCarburacion := rec.GasTanqueCarburacionFinal - rec.GasTanqueCarburacionInicial;
-                    end;
-                }
-                field("Lectura final gas liquido taque carburacion"; Rec.GasTanqueCarburacionFinal)
-                {
-                    ToolTip = 'Specifies the value of the GasTanqueCarburacionFinal field';
-                    ApplicationArea = All;
-                    Caption = 'Lectura final gas liquido taque carburacion';
-
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        Rec.VariacionGasTanqueCarburacion := rec.GasTanqueCarburacionFinal - rec.GasTanqueCarburacionInicial;
-                    end;
-                }
-                field("Varacion gas liquido taque carburacion"; Rec.VariacionGasTanqueCarburacion)
-                {
-                    ToolTip = 'Specifies the value of the VariacionGasTanqueCarburacion field';
-                    ApplicationArea = All;
-                    Caption = 'Varacion gas liquido taque carburacion';
-                    Enabled = false;
-                }
-            }
         }
     }
 
