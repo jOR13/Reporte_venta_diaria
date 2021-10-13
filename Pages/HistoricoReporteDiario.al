@@ -4,6 +4,7 @@ page 60004 HistoricoReporteDiario
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = tableReporteDiario;
+    Caption = 'Reporte venta diaria';
 
     layout
     {

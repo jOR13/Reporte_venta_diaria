@@ -270,7 +270,6 @@ page 60001 pagReporteDiario
                         myInt: Integer;
                     begin
                         Rec.tanqueCarburacionVariacionP := rec.tanqueCarburacionFinalP - rec.tanqueCarburacionInicialP;
-
                         Rec.tanqueCarburacionInicialL := (rec.tanqueCarburacionInicialP / rec.CapacidadT) * 100;
                         Rec.tanqueCarburacionFinalL := (rec.tanqueCarburacionFinalP / rec.CapacidadT) * 100;
                         Rec.tanqueCarburacionVariacionL := (rec.tanqueCarburacionVariacionP / rec.CapacidadT) * 100;
@@ -281,7 +280,7 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the VariacionMedidorCarburacion field';
                     ApplicationArea = All;
                     Caption = 'Variacion de lectura medidor de carburacion %';
-                    Enabled = false;
+                    Editable = false;
                 }
 
                 field("Lectura inicial de medidor de carburacion (Litros)"; Rec.tanqueCarburacionInicialL)
@@ -289,6 +288,7 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the MedidorCarburacionInicial field';
                     ApplicationArea = All;
                     Caption = 'Lectura inicial de medidor de carburacion (Litros)';
+                    Editable = false;
 
                 }
                 field("Lectura final de medidor de carburacion (litros)"; Rec.tanqueCarburacionFinalL)
@@ -296,6 +296,7 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the MedidorCarburacionFianl field';
                     ApplicationArea = All;
                     Caption = 'Lectura final de medidor de carburacion (Litros)';
+                    Editable = false;
 
                 }
                 field("Variacion de lectura medidor de carburacion (litros)"; Rec.tanqueCarburacionVariacionL)
@@ -303,7 +304,7 @@ page 60001 pagReporteDiario
                     ToolTip = 'Specifies the value of the VariacionMedidorCarburacion field';
                     ApplicationArea = All;
                     Caption = 'Variacion de lectura medidor de carburacion (Litros)';
-                    Enabled = false;
+                    Editable = false;
 
                 }
 
