@@ -112,6 +112,7 @@ page 60004 HistoricoReporteDiario
                     ApplicationArea = All;
                     Caption = 'Diferencia';
                     Style = Unfavorable;
+                    StyleExpr = Emphasize;
                 }
                 field(diferenciaPorcentaje; Rec.diferenciaPorcentaje)
                 {
