@@ -2,6 +2,7 @@ page 60004 HistoricoReporteDiario
 {
     PageType = List;
     ApplicationArea = All;
+    Editable = false;
     UsageCategory = Lists;
     SourceTable = tableReporteDiario;
     Caption = 'Reporte venta diaria';
@@ -20,6 +21,15 @@ page 60004 HistoricoReporteDiario
                     Caption = 'Folio';
                     Style = Unfavorable;
                     StyleExpr = Emphasize;
+                    trigger OnDrillDown()
+                    var
+                        reporteDiario: Page pagReporteDiario;
+                        rd: Record tableReporteDiario;
+                    begin
+                        rd.SetFilter(rd.id, FORMAT(rec.id));
+                        reporteDiario.SetTableView(rd);
+                        reporteDiario.RunModal();
+                    end;
 
                 }
                 field(Posting_Date; Rec.Posting_Date)
