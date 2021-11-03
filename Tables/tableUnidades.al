@@ -1,7 +1,7 @@
 table 60003 tableUnidades
 {
     DataClassification = ToBeClassified;
-    Permissions = TableData "tableReporteDiario" = r;
+    Permissions = TableData "tableReporteDiario" = rimd;
     fields
     {
         field(1; id; Integer)

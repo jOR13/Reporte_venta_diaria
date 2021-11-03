@@ -1,6 +1,8 @@
 table 60002 tableCedis
 {
     DataClassification = ToBeClassified;
+    Permissions = TableData "tableCedis" = rimd;
+
 
     fields
     {
